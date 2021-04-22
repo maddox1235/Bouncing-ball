@@ -20,18 +20,16 @@ gravity = 0.1
 
 while True:
 
- ball.dy -= gravity
- ball.sety(ball.ycor() + ball.dy)
+    ball.dy -= gravity
+    ball.sety(ball.ycor() + ball.dy)
+    ball.setx(ball.xcor() + ball.dx)
 
-ball.setx(ball.xcor() + ball.dx)
+    # check for a wall collision
+    if ball.xcor() > 220:
+        ball.dx *= -1
+        if ball.xcor() < -220:
+            ball.dx *= -1
 
-         # check for a wall collision
-         if ball.xcor() > 300:
-             ball.dx *= -1
-
-             if ball.xcor() < -300:
-                 ball.dx *= -1
-
-           # check for a bounce
-          if ball.ycor() < -300:
-        ball.dy *= -1
+            # check for a bounce
+        if ball.ycor() < -220:
+            ball.dy *= -1
